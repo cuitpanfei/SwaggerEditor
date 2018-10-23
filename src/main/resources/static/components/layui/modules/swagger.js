@@ -95,11 +95,14 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
          * @param  {[type]} element [description]
          */
         findInterfaceElement: function (element){
-            var tagTargetElement = this.findTagTargetElement(element);
-            if(tagTargetElement){
-                return $(tagTargetElement).find("[class^='layui-colla-content']")[0];
+        	var root = document.getElementById("root");
+        	var baseNode = element.parentNode.parentNode.parentNode;
+        	if(element.getAttribute('id')&&element.getAttribute('id').indexOf("operation-")>-1){
+                return element;
+            }else if(baseNode == root){
+                return false;
             }else{
-                return tagTargetElement;
+            	return this.findInterfaceElement(element.parentNode);
             }
         },
 
@@ -155,6 +158,7 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
          */
         addInterface: function(buttonElement){
             var _this = this;
+            var _buttonElement = buttonElement;
             layer.open({
                   type: 1,
                   skin: 'layui-layer-rim', //加上边框
@@ -168,7 +172,7 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
                     var desc = $(layero).find('#desc')[0].value;
                     var method = $(layero).find('input[name="method"][checked]')[0].value;
                     var newElement = _this.creatInterfaceElement(name,desc,method);
-                    $(_this).appendChild(newElement);
+                    _this.insertAfter(newElement,_buttonElement);
                     element.render();
                     layer.close(index);
                   },

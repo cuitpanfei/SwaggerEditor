@@ -62,6 +62,11 @@ h2[DELETE] .interface-method{
 .interface-body *[contenteditable="true"]{
 	
 }
+/* 接口面板 */
+.layui-colla-content.layui-collapse div.layui-colla-item[GET]{
+	border: 2px solid #61affe;
+	border-radius:2px;
+}
 /* description-wrapper css */
 .layui-colla-content .description-wrapper{
 	font-size: 12px;
