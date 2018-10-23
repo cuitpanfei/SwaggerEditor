@@ -67,9 +67,10 @@
 			});
 		}
 		function addInterface(buttonElement) {
-			layui.use([ 'swagger' ], function() {
+			layui.use([ 'swagger','code' ], function() {
 				var swagger = layui.swagger;
 				swagger.addInterface(buttonElement);
+				layui.code();
 			});
 		}
 		function delInterface(buttonElement) {

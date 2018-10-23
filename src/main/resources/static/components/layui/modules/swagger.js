@@ -170,11 +170,12 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
                   yes: function(index,layero){
                     var name = $(layero).find('#name')[0].value;
                     var desc = $(layero).find('#desc')[0].value;
-                    var method = $(layero).find('input[name="method"][checked]')[0].value;
+                    var method = $(layero).find('div.layui-form-radioed')[0].lastChild.innerHTML;
                     var newElement = _this.creatInterfaceElement(name,desc,method);
                     _this.insertAfter(newElement,_buttonElement);
                     element.render();
                     layer.close(index);
+                    layui.code();
                   },
                   content: '<div class="layui-form layui-form-pane" id="tagForm" style="padding: 10px;"><div class="layui-form-item" pane=""><label class="layui-form-label">类型</label><div class="layui-input-block"><input type="radio" name="method" value="GET" title="GET" checked/><input type="radio" name="method" value="POST" title="POST"/><input type="radio" name="method" value="PUT" title="PUT"/><input type="radio" name="method" value="DELETE" title="DELETE"/></div></div><div class="layui-form-item"><label class="layui-form-label">uri</label><div class="layui-input-block"><input type="text" id="name" name="name" lay-verify="required|name"autocomplete="off" placeholder="如：/terminalInfo"class="layui-input" /></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">描述</label><div class="layui-input-block"><textarea id="desc" name="desc" lay-verify="required"placeholder="请输入描述" class="layui-textarea" ></textarea></div></div></div>'
             });

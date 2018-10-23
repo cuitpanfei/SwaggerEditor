@@ -65,7 +65,6 @@ function changeCode(btn){
 			title: '请修改',
 			area: ['600px','350px']
 		},function(value,index,elem){
-			console.log(elem);
 			var json = formatJson(value);
 			pre.html(json);
 			layer.close(index);
