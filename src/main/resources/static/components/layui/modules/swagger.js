@@ -1,9 +1,14 @@
-layui.define(['element', 'layer', 'jquery','form'], function(exports){ 
+layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){ 
     var $ = layui.jquery;
     var element = layui.element;
     var layer= layui.layer;
     var form = layui.form;
+    var laytpl = layui.laytpl;
     var addInterfaceHTML = '<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="addInterface(this)">添加接口</button>';
+    var interfaceHTMLTemplet ='';
+    $.get("/components/layui/modules/interface.html",function(data){
+    	interfaceHTMLTemplet=data;
+    });
     var obj = {
         insertAfter: function (newElement, targetElement) {
             var parent = targetElement.parentNode;
@@ -56,14 +61,15 @@ layui.define(['element', 'layer', 'jquery','form'], function(exports){
 
             var content = document.createElement("div");
             content.setAttribute("class", "layui-colla-content layui-show");
-            //TODO 接口文档内容
-            content.innerHTML = '';
+            laytpl(interfaceHTMLTemplet).render({name,desc,method},function(html){
+                content.innerHTML = html;
+            });
             interfaceElement.appendChild(content);
             return interfaceElement;
         },
 
         /**
-         * [findTagTargetElement 从父节点中找到TargetElement，如果找到root节点都没有找到，返回false]
+         * [findTagTargetElement 从父节点中找TargetElement，如果找到root节点都没有找到，返回false]
          * @param  {[element]} element [起始按钮节点]
          * @param  {[string]} _class [期望的class]
          */
@@ -120,7 +126,7 @@ layui.define(['element', 'layer', 'jquery','form'], function(exports){
                   success: function(layero, index){
                     form.render();
                   },
-                  content: '<div class="layui-form" id="tagForm"><div class="layui-form-item"> <div class="layui-inline">   <label class="layui-form-label">Tag名</label> <div class="layui-input-inline"> <input type="text" id="name" name="name" lay-verify="title" autocomplete="off" placeholder="如：terminalInfo" class="layui-input"/> </div></div><div class="layui-inline"><label class="layui-form-label">描述</label> <div class="layui-input-inline"><input type="text" id="desc" name="desc" lay-verify="title" autocomplete="off" placeholder="请输入描述" class="layui-input"/> </div> </div></div></div> '
+                  content: '<div class="layui-form layui-form-pane" id="tagForm" style="padding:10px 20px;"><div class="layui-form-item"> <div class="layui-inline">   <label class="layui-form-label">Tag名</label> <div class="layui-input-inline"> <input type="text" id="name" name="name" lay-verify="title" autocomplete="off" placeholder="如：terminalInfo" class="layui-input"/> </div></div><div class="layui-inline"><label class="layui-form-label">描述</label> <div class="layui-input-inline"><input type="text" id="desc" name="desc" lay-verify="title" autocomplete="off" placeholder="请输入描述" class="layui-input"/> </div> </div></div></div> '
             });
         },
         /**
@@ -152,22 +158,21 @@ layui.define(['element', 'layer', 'jquery','form'], function(exports){
             layer.open({
                   type: 1,
                   skin: 'layui-layer-rim', //加上边框
-                  area: ['380px', '240px'], //宽高
+                  area: ['600px', '380px'], //宽高
                   btn: ['确定','取消'],
+                  success: function(){
+                	  form.render();
+                  },
                   yes: function(index,layero){
-                    var targetElement = _this.findInterfaceElement(buttonElement);
-                    var name = $(layero).find("#name")[0].value;
-                    var desc = $(layero).find("#desc")[0].value;
-                    var method = $(layero).find("#desc")[0].method;
+                    var name = $(layero).find('#name')[0].value;
+                    var desc = $(layero).find('#desc')[0].value;
+                    var method = $(layero).find('input[name="method"][checked]')[0].value;
                     var newElement = _this.creatInterfaceElement(name,desc,method);
-                    _this.insertAfter(newElement,targetElement);
+                    $(_this).appendChild(newElement);
                     element.render();
                     layer.close(index);
                   },
-                  success: function(layero, index){
-                    form.render();
-                  },
-                  content: '<div class="layui-form" id="tagForm"><div class="layui-form-item"> <div class="layui-inline">   <label class="layui-form-label">Tag名</label> <div class="layui-input-inline"> <input type="text" id="name" name="name" lay-verify="title" autocomplete="off" placeholder="如：terminalInfo" class="layui-input"/> </div></div><div class="layui-inline"><label class="layui-form-label">描述</label> <div class="layui-input-inline"><input type="text" id="desc" name="desc" lay-verify="title" autocomplete="off" placeholder="请输入描述" class="layui-input"/> </div> </div></div></div> '
+                  content: '<div class="layui-form layui-form-pane" id="tagForm" style="padding: 10px;"><div class="layui-form-item" pane=""><label class="layui-form-label">类型</label><div class="layui-input-block"><input type="radio" name="method" value="GET" title="GET" checked/><input type="radio" name="method" value="POST" title="POST"/><input type="radio" name="method" value="PUT" title="PUT"/><input type="radio" name="method" value="DELETE" title="DELETE"/></div></div><div class="layui-form-item"><label class="layui-form-label">uri</label><div class="layui-input-block"><input type="text" id="name" name="name" lay-verify="required|name"autocomplete="off" placeholder="如：/terminalInfo"class="layui-input" /></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">描述</label><div class="layui-input-block"><textarea id="desc" name="desc" lay-verify="required"placeholder="请输入描述" class="layui-textarea" ></textarea></div></div></div>'
             });
         },
         /**

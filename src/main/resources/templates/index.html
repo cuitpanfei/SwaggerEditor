@@ -23,9 +23,6 @@
 	<div class="layui-main" style="margin-top: 10px;">
 		<div class="layui-container">
 			<div class="layui-row">
-				<div class="layui-col-md3">
-					<menu></menu>
-				</div>
 				<div class="layui-col-md9">
 					<div class="layui-collapse" lay-accordion="">
 						<div class="layui-colla-item">
@@ -36,13 +33,16 @@
 										onclick="addTag(this)">在后面插入Tag</button>
 								</div>
 							</h2>
-							<div class="layui-colla-content">
+							<div class="layui-colla-content layui-collapse">
 								<button type="button"
 									class="layui-btn layui-btn-xs addInterface"
 									onclick="addInterface(this)">添加接口</button>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="layui-col-md3">
+					<menu></menu>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,77 @@
+<div class="layui-colla-item">
+		<h2 class="layui-colla-title" {{d.method}}>
+			<span class="fl"><span class="interface-method">{{d.method}}</span> <b>{{d.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;{{d.desc}}</span>
+			<div class="fr input-group">
+				<button type="button" class="layui-btn layui-btn-xs layui-btn-disabled addInterface"
+				onclick="addInterface(this)" disabled>修改接口</button>
+			<button type="button" class="layui-btn layui-btn-xs addInterface"
+				onclick="delInterface(this)">删除接口</button>
+			</div>
+		</h2>
+		<div class="layui-colla-content" {{d.method}}>
+			<div class="interface-body">
+				<div class="interface-body-header">
+					<div class="layui-row">
+						<div contenteditable="true" class="description-wrapper">
+							接口描述
+						</div>
+					</div>
+				</div>
+				<div class="interface-body-container">
+					<div class="layui-row head-bg">
+						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+							<h4 class="table-title">Parameters</h4>
+						</div>
+					</div>
+					<hr>
+					<div class="layui-row">
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>Name</h4>
+						</div>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>Description</h4>
+						</div>
+						<hr>
+						{{# if(d.method!='GET'){ }}
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>body<span class="layui-badge-dot"></span></h4>
+						</div>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<pre class="layui-code"></pre>
+						</div>
+						{{# } }}
+						{{# if(d.method=='GET'){ }}
+						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+							<button class="layui-btn">添加参数</button>
+						</div>
+						{{# } }}
+					</div>
+					<hr>
+					<div class="layui-row head-bg">
+						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+							<h4 class="table-title">Responses</h4>
+						</div>
+					</div>
+					<hr>
+					<div class="layui-row">
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>Code</h4>
+						</div>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>Description</h4>
+						</div>
+						<hr>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<h4>200</h4>
+						</div>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<pre class="layui-code">{
+							  "code": 0,//0-成功，其他-失败 失败状态码格式：ABBB A：错误级别，1-提示，2-警告，3-严重 BBB：接口自定义状态码，范围从001-999
+							  "message": "string"//原因
+							}</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

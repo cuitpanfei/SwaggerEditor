@@ -11,3 +11,62 @@
 .fr {
 	float: right;
 }
+
+.head-bg{
+    padding: 10px;
+    background: #e2e2e2;
+}
+
+input[title='POST'] + div.layui-form-radioed,input[title='POST'] + div.layui-form-radioed>i{
+	color:#49cc90;
+}
+input[title='PUT'] + div.layui-form-radioed,input[title='PUT'] + div.layui-form-radioed>i{
+	color:#fca130;
+}
+input[title='GET'] + div.layui-form-radioed,input[title='GET'] + div.layui-form-radioed>i{
+	color:#61affe;
+}
+input[title='DELETE'] + div.layui-form-radioed,input[title='DELETE'] + div.layui-form-radioed>i{
+	color:#f93e3e;
+}
+
+/*interface css*/
+.interface-method{
+	font-size: 14px;
+    font-weight: 700;
+    min-width: 80px;
+    padding: 6px 15px;
+    text-align: center;
+    border-radius: 3px;
+    background: #000;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    font-family: Titillium Web,sans-serif;
+    color: #fff;
+}
+h2[GET] .interface-method{
+	background:#61affe;
+}
+h2[POST] .interface-method{
+	background:#49cc90;
+}
+h2[PUT] .interface-method{
+	background:#fca130;
+}
+h2[DELETE] .interface-method{
+	background:#f93e3e;
+}
+/* interface-body css */
+.interface-body{
+	
+}
+.interface-body *[contenteditable="true"]{
+	
+}
+/* description-wrapper css */
+.layui-colla-content .description-wrapper{
+	font-size: 12px;
+    margin: 0 0 5px;
+    padding: 15px 20px;
+    font-family: Open Sans,sans-serif;
+    color: #3b4151;
+}
