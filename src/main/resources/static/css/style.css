@@ -32,10 +32,10 @@ input[title='DELETE'] + div.layui-form-radioed,input[title='DELETE'] + div.layui
 
 /*interface css*/
 .interface-method{
-	font-size: 14px;
-    font-weight: 700;
+	font-size: 12px;
+    font-weight: 400;
     min-width: 80px;
-    padding: 6px 15px;
+    padding: 3px 9px;
     text-align: center;
     border-radius: 3px;
     background: #000;
@@ -43,6 +43,19 @@ input[title='DELETE'] + div.layui-form-radioed,input[title='DELETE'] + div.layui
     font-family: Titillium Web,sans-serif;
     color: #fff;
 }
+h2[GET].layui-colla-title{
+	border:#61affe;
+}
+h2[POST].layui-colla-title{
+	border:#49cc90;
+}
+h2[PUT].layui-colla-title{
+	border:#fca130;
+}
+h2[DELETE].layui-colla-title{
+	border:#f93e3e;
+}
+
 h2[GET] .interface-method{
 	background:#61affe;
 }

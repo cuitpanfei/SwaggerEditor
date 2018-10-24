@@ -37,13 +37,12 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
             h2.setAttribute("class", "layui-colla-title");
             h2.innerHTML='<span class="fl"><b>'+name+'</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;'+desc+'</span>'+
                          '<div class="fr button-group">'+
-                            '<button type="button" class="layui-btn layui-btn-xs addTag" onclick="addTag(this)">在后面插入Tag</button>'+
-                            '<button type="button" class="layui-btn layui-btn-xs delTag" onclick="delTag(this)">删除当前Tag</button>'+
+                            '<button type="button" class="layui-btn layui-btn-xs layui-btn-normal addTag" onclick="addTag(this)"><i class="layui-icon">&#xe654;</i>在后面插入Tag</button>'+
+                            '<button type="button" class="layui-btn layui-btn-xs layui-btn-danger delTag" onclick="delTag(this)"><i class="layui-icon">&#xe640;</i>删除当前Tag</button>'+
                          '</div>';
             var content = document.createElement("div");
             content.setAttribute("class", "layui-colla-content");
             content.innerHTML=addInterfaceHTML;
-            
             tagElement.appendChild(h2);
             tagElement.appendChild(content);
             return tagElement;
@@ -63,6 +62,9 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
             content.setAttribute("class", "layui-colla-content layui-show");
             laytpl(interfaceHTMLTemplet).render({name,desc,method},function(html){
                 content.innerHTML = html;
+            });
+            layui.each($(content).find('pre'),function(index,pre){
+                layui.code({elem:pre,skin:'notpadd'});
             });
             interfaceElement.appendChild(content);
             return interfaceElement;
@@ -175,7 +177,6 @@ layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){
                     _this.insertAfter(newElement,_buttonElement);
                     element.render();
                     layer.close(index);
-                    layui.code();
                   },
                   content: '<div class="layui-form layui-form-pane" id="tagForm" style="padding: 10px;"><div class="layui-form-item" pane=""><label class="layui-form-label">类型</label><div class="layui-input-block"><input type="radio" name="method" value="GET" title="GET" checked/><input type="radio" name="method" value="POST" title="POST"/><input type="radio" name="method" value="PUT" title="PUT"/><input type="radio" name="method" value="DELETE" title="DELETE"/></div></div><div class="layui-form-item"><label class="layui-form-label">uri</label><div class="layui-input-block"><input type="text" id="name" name="name" lay-verify="required|name"autocomplete="off" placeholder="如：/terminalInfo"class="layui-input" /></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">描述</label><div class="layui-input-block"><textarea id="desc" name="desc" lay-verify="required"placeholder="请输入描述" class="layui-textarea" ></textarea></div></div></div>'
             });

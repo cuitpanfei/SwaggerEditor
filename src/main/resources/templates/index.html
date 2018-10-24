@@ -29,14 +29,14 @@
 							<h2 class="layui-colla-title">
 								<span class="fl"><b>test</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;实例</span>
 								<div class="fr input-group">
-									<button type="button" class="layui-btn layui-btn-xs addTag"
-										onclick="addTag(this)">在后面插入Tag</button>
+									<button type="button" class="layui-btn layui-btn-xs layui-btn-normal addTag"
+										onclick="addTag(this)"><i class="layui-icon">&#xe654;</i>在后面插入Tag</button>
 								</div>
 							</h2>
 							<div class="layui-colla-content layui-collapse">
 								<button type="button"
 									class="layui-btn layui-btn-xs addInterface"
-									onclick="addInterface(this)">添加接口</button>
+									onclick="addInterface(this)"><i class="layui-icon">&#xe654;</i>添加接口</button>
 							</div>
 						</div>
 					</div>
@@ -70,7 +70,6 @@
 			layui.use([ 'swagger','code' ], function() {
 				var swagger = layui.swagger;
 				swagger.addInterface(buttonElement);
-				layui.code();
 			});
 		}
 		function delInterface(buttonElement) {

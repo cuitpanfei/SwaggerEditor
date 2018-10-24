@@ -1,14 +1,12 @@
-<div class="layui-colla-item" {{d.method}}>
+<div class="layui-colla-item" {{d.method}} iseditor>
 		<h2 class="layui-colla-title" {{d.method}}>
 			<span class="fl"><span class="interface-method">{{d.method}}</span> <b>{{d.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;{{d.desc}}</span>
 			<div class="fr input-group">
-				<button type="button" class="layui-btn layui-btn-xs layui-btn-disabled addInterface"
-				onclick="addInterface(this)" disabled>修改接口</button>
-			<button type="button" class="layui-btn layui-btn-xs addInterface"
-				onclick="delInterface(this)">删除接口</button>
+				<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="editInterface(this)"><i class="layui-icon">&#xe642;</i>修改接口</button>
+				<button type="button" class="layui-btn layui-btn-xs delInterface" onclick="delInterface(this)"><i class="layui-icon">&#xe640;</i>删除接口</button>
 			</div>
 		</h2>
-		<div class="layui-colla-content" {{d.method}}>
+		<div class="layui-colla-content layui-show" {{d.method}}>
 			<div class="interface-body">
 				<div class="interface-body-header">
 					<div class="layui-row">
@@ -20,7 +18,7 @@
 				<div class="interface-body-container">
 					<div class="layui-row head-bg">
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-							<h4 class="table-title">Parameters</h4>
+							<h4 class="table-title"><b>Parameters</b></h4>
 						</div>
 					</div>
 					<hr>
@@ -42,14 +40,16 @@
 						{{# } }}
 						{{# if(d.method=='GET'){ }}
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-							<button class="layui-btn">添加参数</button>
+							<button class="layui-btn layui-btn-primary layui-btn-sm">
+						    	<i class="layui-icon">&#xe654;</i>添加参数
+						  	</button>
 						</div>
 						{{# } }}
 					</div>
 					<hr>
 					<div class="layui-row head-bg">
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-							<h4 class="table-title">Responses</h4>
+							<h4 class="table-title"><b>Responses</b></h4>
 						</div>
 					</div>
 					<hr>
