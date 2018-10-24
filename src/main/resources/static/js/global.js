@@ -60,7 +60,7 @@ function changeCode(btn){
 			var json = formatJson(value);
 			pre.html(json);
 			layer.close(index);
-			layui.code({elem:pre});
+			layui.code({elem:pre,skin:'notepad'});
 			layui.each($(pre).find('li'),function(index,item){
 				if(item.innerText.trim()===''){
 					$(item).remove();
