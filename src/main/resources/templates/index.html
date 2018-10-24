@@ -72,6 +72,19 @@
 				swagger.addInterface(buttonElement);
 			});
 		}
+		function editInterface(method,name){
+			layui.use(['jquery'],function(){
+				var $ = layui.$;
+				var collaItemId="#interface-"+method+"-"+name+"-pane .interface-body";
+				var interface_body=$(collaItemId)[0];
+				layui.each($(interface_body).find('[caneditor]'),function(index,item){
+					if(item){
+						console.log(item.localName)
+					}
+				})
+			});
+			
+		}
 		function delInterface(buttonElement) {
 			layui.use([ 'swagger' ], function() {
 				var swagger = layui.swagger;

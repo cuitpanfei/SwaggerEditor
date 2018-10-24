@@ -1,8 +1,8 @@
-<div class="layui-colla-item" {{d.method}} iseditor>
+<div class="layui-colla-item" {{d.method}} id="interface-{{d.method}}-{{d.name}}-pane">
 		<h2 class="layui-colla-title" {{d.method}}>
 			<span class="fl"><span class="interface-method">{{d.method}}</span> <b>{{d.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;{{d.desc}}</span>
 			<div class="fr input-group">
-				<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="editInterface(this)"><i class="layui-icon">&#xe642;</i>修改接口</button>
+				<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="editInterface('{{d.method}}','{{d.name}}')"><i class="layui-icon">&#xe642;</i>修改接口</button>
 				<button type="button" class="layui-btn layui-btn-xs delInterface" onclick="delInterface(this)"><i class="layui-icon">&#xe640;</i>删除接口</button>
 			</div>
 		</h2>
@@ -10,7 +10,7 @@
 			<div class="interface-body">
 				<div class="interface-body-header">
 					<div class="layui-row">
-						<div contenteditable="true" class="description-wrapper">
+						<div caneditor class="description-wrapper">
 							接口描述
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 						{{# } }}
 						{{# if(d.method=='GET'){ }}
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-							<button class="layui-btn layui-btn-primary layui-btn-sm">
+							<button class="layui-btn layui-btn-primary layui-btn-sm" caneditor>
 						    	<i class="layui-icon">&#xe654;</i>添加参数
 						  	</button>
 						</div>
@@ -65,7 +65,7 @@
 							<h4>200</h4>
 						</div>
 						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-							<pre class="layui-code">{
+							<pre class="layui-code" lay-skin="notepad" >{
 							  "code": 0,
 							  "message": "string"
 							}</pre>
