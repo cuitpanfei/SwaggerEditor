@@ -1,4 +1,4 @@
-package cn.com.pfinfo.blog;
+package cn.com.pfinfo.swagger;
 
 import java.util.Arrays;
 import java.util.HashMap;

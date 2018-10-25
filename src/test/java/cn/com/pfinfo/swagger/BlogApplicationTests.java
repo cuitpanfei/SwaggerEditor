@@ -1,4 +1,4 @@
-package cn.com.pfinfo.blog;
+package cn.com.pfinfo.swagger;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
