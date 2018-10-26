@@ -1,13 +1,14 @@
 <div class="layui-colla-item" {{d.method}} id="interface-{{d.method}}-{{d.name}}-pane">
 		<h2 class="layui-colla-title" {{d.method}}>
 			<span class="fl"><span class="interface-method">{{d.method}}</span> <b>{{d.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;{{d.desc}}</span>
-			<div class="fr input-group">
-				<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="editInterface('{{d.method}}','{{d.name}}')"><i class="layui-icon">&#xe642;</i>修改接口</button>
-				<button type="button" class="layui-btn layui-btn-xs delInterface" onclick="delInterface(this)"><i class="layui-icon">&#xe640;</i>删除接口</button>
+			<div class="fr input-group" isEditor=false>
+				<button type="button" class="layui-btn layui-btn-xs layui-btn-warm editInterface" onclick="editInterface('{{d.method}}','{{d.name}}')"><i class="layui-icon">&#xe642;</i>修改接口</button>
+				<button type="button" class="layui-btn layui-btn-xs modifiedInterface" onclick="modifiedInterface('{{d.method}}','{{d.name}}')"><i class="layui-icon">&#xe642;</i>完成修改</button>
+				<button type="button" class="layui-btn layui-btn-xs layui-btn-danger delInterface" onclick="delInterface(this)"><i class="layui-icon">&#xe640;</i>删除接口</button>
 			</div>
 		</h2>
 		<div class="layui-colla-content layui-show" {{d.method}}>
-			<div class="interface-body">
+			<div class="interface-body" isEditor=false>
 				<div class="interface-body-header">
 					<div class="layui-row">
 						<div caneditor class="description-wrapper">
@@ -23,28 +24,41 @@
 					</div>
 					<hr>
 					<div class="layui-row">
-						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-							<h4>Name</h4>
-						</div>
-						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-							<h4>Description</h4>
-						</div>
-						<hr>
-						{{# if(d.method!='GET'){ }}
-						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-							<h4>body<span class="layui-badge-dot"></span></h4>
-						</div>
-						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-							<pre class="layui-code">{}</pre>
-						</div>
-						{{# } }}
-						{{# if(d.method=='GET'){ }}
-						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-							<button class="layui-btn layui-btn-primary layui-btn-sm" caneditor>
-						    	<i class="layui-icon">&#xe654;</i>添加参数
-						  	</button>
-						</div>
-						{{# } }}
+						<button class="layui-btn layui-btn-primary layui-btn-sm" onclick="addParameter(this)" caneditor>
+							<i class="layui-icon">&#xe654;</i>添加参数
+						</button>
+						<table class="layui-table" lay-filter="paramter_table">
+							<thead>
+							<tr >
+								<th colspan="3">Name</th>
+								<th >Description</th>
+							</tr>
+							<tr >
+								<th lay-data="{field:'name'}">名称</th>
+								<th lay-data="{field:'type'}">类型</th>
+								<th lay-data="{field:'in'}">所在域</th>
+								<th lay-data="{field:'desc'}">描述</th>
+							</tr>
+							</thead>
+							<tbody>
+								{{# if(d.method!='GET'){ }}
+								<tr>
+									<td ><h4>body<span class="layui-badge-dot"></span></h4></td>
+									<td></td>
+									<td></td>
+									<td ><pre class="layui-code">{}</pre></td>
+								</tr>
+								{{# } }}
+								{{# if(d.method=='GET'){ }}
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								<tr>
+								{{# } }}
+							</tbody>
+						</table>
 					</div>
 					<hr>
 					<div class="layui-row head-bg">

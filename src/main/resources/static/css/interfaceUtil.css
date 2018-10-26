@@ -1,0 +1,19 @@
+/* input-group */
+div[isEditor="true"].input-group > button.editInterface,div[isEditor="false"].input-group > button.modifiedInterface{
+	display:none;
+}
+div[isEditor="true"].input-group > button.modifiedInterface,div[isEditor="false"].input-group > button.editInterface{
+	display:inline-block;
+}
+
+
+/* interface-body */
+div[isEditor="true"].interface-body button[caneditor]{
+	display:inline-block;
+}
+div[isEditor="false"].interface-body button[caneditor]{
+	display:none;
+}
+div.parameter div[class^='layui-col']{
+	border:1px,solid #e6e6e6;
+}

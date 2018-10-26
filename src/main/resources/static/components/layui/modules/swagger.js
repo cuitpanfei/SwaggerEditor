@@ -1,4 +1,4 @@
-layui.define(['element', 'layer', 'jquery','form','laytpl'], function(exports){ 
+layui.define(['element', 'layer', 'jquery','form','laytpl','code'], function(exports){ 
     var $ = layui.jquery;
     var element = layui.element;
     var layer= layui.layer;

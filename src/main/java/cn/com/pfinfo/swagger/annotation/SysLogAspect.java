@@ -20,6 +20,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.xiaoleilu.hutool.date.DateUtil;
 import com.xiaoleilu.hutool.json.JSONUtil;
+import com.xiaoleilu.hutool.util.BeanUtil;
+import com.xiaoleilu.hutool.util.ObjectUtil;
 
 import cn.com.pfinfo.swagger.bean.SysLogBean;
 import cn.com.pfinfo.swagger.bean.User;
@@ -46,6 +48,9 @@ public class SysLogAspect {
             String description = getControllerMethodDescription(joinPoint);
             Object obj = request.getSession().getAttribute("loginUser");
             User user = new User();
+            if(ObjectUtil.isNotNull(obj)){
+            	BeanUtil.copyProperties(obj, user);
+            }
             /*对象obj中必须拥有属性account、name*/
             if(StringUtils.isEmpty(user.getAccount())){
                 user = new User("Anonymous", "匿名用户");
