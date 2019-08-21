@@ -23,9 +23,9 @@ function addInterface(buttonElement) {
 function editInterface(method,name){
 	layui.use(['jquery'],function(){
 		var $ = layui.$;
-		var collaItemId="#interface-"+method+"-"+name+"-pane"
+		var collaItemId="#interface-"+method+"-"+md5(name)+"-pane"
 		var interfaceBodyClass=" .interface-body";
-		var interface_body=$(collaItemId+interfaceBodyClass)[0];
+		var interface_body=($(collaItemId+interfaceBodyClass))[0];
 		layui.each($(collaItemId).find("div[isEditor='false']"),function(index,item){
 			item.setAttribute('isEditor',true);
 		});
@@ -38,7 +38,7 @@ function editInterface(method,name){
 function modifiedInterface(method,name){
 	layui.use(['jquery'],function(){
 		var $ = layui.$;
-		var collaItemId="#interface-"+method+"-"+name+"-pane"
+		var collaItemId="#interface-"+method+"-"+md5(name)+"-pane"
 		var interfaceBodyClass=" .interface-body";
 		var interface_body=$(collaItemId+interfaceBodyClass)[0];
 		layui.each($(collaItemId).find("div[isEditor='true']"),function(index,item){

@@ -1,4 +1,4 @@
-<div class="layui-colla-item" {{d.method}} id="interface-{{d.method}}-{{d.name}}-pane">
+<div class="layui-colla-item" {{d.method}} id="interface-{{d.method}}-{{md5(d.name)}}-pane">
 		<h2 class="layui-colla-title" {{d.method}}>
 			<span class="fl"><span class="interface-method">{{d.method}}</span> <b>{{d.name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;{{d.desc}}</span>
 			<div class="fr input-group" isEditor=false>
@@ -43,7 +43,7 @@
 							<tbody>
 								{{# if(d.method!='GET'){ }}
 								<tr>
-									<td ><h4>body<span class="layui-badge-dot"></span></h4></td>
+									<td><h4>body<span class="layui-badge-dot"></span></h4></td>
 									<td></td>
 									<td></td>
 									<td ><pre class="layui-code">{}</pre></td>

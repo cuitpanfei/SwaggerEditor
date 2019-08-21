@@ -18,13 +18,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.xiaoleilu.hutool.date.DateUtil;
-import com.xiaoleilu.hutool.json.JSONUtil;
-import com.xiaoleilu.hutool.util.BeanUtil;
-import com.xiaoleilu.hutool.util.ObjectUtil;
-
 import cn.com.pfinfo.swagger.bean.SysLogBean;
 import cn.com.pfinfo.swagger.bean.User;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.json.JSONUtil;
 
 @Aspect
 @Component
