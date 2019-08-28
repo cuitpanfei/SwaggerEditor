@@ -55,12 +55,13 @@ function delInterface(buttonElement) {
 		swagger.delInterface(buttonElement);
 	});
 }
-function addParameter(buttonElement){
+function addParameter(buttonElement,method,name){
 	layui.use([ 'swagger','jquery','table' ], function() {
 		var swagger = layui.swagger;
 		var table = layui.table;
 		var $ = layui.$;
-		var parametersRow = buttonElement.parentNode.parentNode;
+		var tableId= method+"-"+md5(name)+"-table";
+		var parametersRow = $(buttonElement.parentNode).find('table[lay-filter="paramter_table"]')[0];
 		var parameter = document.createElement("div");
 		parameter.setAttribute("class", "layui-col-xs12 layui-col-sm12 layui-col-md12 parameter");
 		parametersRow.appendChild(parameter);

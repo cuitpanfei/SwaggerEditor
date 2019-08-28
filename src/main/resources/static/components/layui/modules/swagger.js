@@ -5,7 +5,7 @@ function(exports) {
     var layer = layui.layer;
     var form = layui.form;
     var laytpl = layui.laytpl;
-    var addInterfaceHTML = '<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="addInterface(this)">添加接口</button>';
+    var addInterfaceHTML = '<button type="button" class="layui-btn layui-btn-xs addInterface" onclick="addInterface(this)"><i class="layui-icon">&#xe654;</i>添加接口</button>';
     var interfaceHTMLTemplet = '';
     $.get("/components/layui/modules/interface.html",
     function(data) {
@@ -60,7 +60,7 @@ function(exports) {
             // 创建div
             var interfaceElement = document.createElement("div");
             interfaceElement.setAttribute("class", "layui-colla-item");
-            interfaceElement.setAttribute("id", "operation-" + method + "_" + name);
+            interfaceElement.setAttribute("id", "operation-" + method + "_" + md5(name));
 
             var content = document.createElement("div");
             content.setAttribute("class", "layui-colla-content layui-show");
@@ -237,6 +237,7 @@ function(exports) {
                 layer.msg('取消删除');
             });
         },
+        
         md5: function md5(string) {
             function md5_RotateLeft(lValue, iShiftBits) {
                 return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
